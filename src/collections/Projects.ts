@@ -74,16 +74,18 @@ const Projects: CollectionConfig = {
               admin: {
                 components: {
                   RowLabel: ({ data, index }: RowLabelArgs) => {
-                    const [label, setLabel] = useState(
-                      `Technology ${String(index).padStart(2, '0')}`,
-                    )
+                    const [label, setLabel] = useState('')
 
                     useEffect(() => {
-                      fetch(
-                        `http://localhost:3000/api/technologies/${data.technology}?locale=undefined&draft=false&depth=1`,
-                      ).then(async (res) => {
-                        setLabel((await res.json()).title)
-                      })
+                      if (data.technology) {
+                        fetch(
+                          `/api/technologies/${data.technology}?locale=undefined&draft=false&depth=1`,
+                        ).then(async (res) => {
+                          setLabel((await res.json()).title)
+                        })
+                      } else {
+                        setLabel(`Technology ${String(index).padStart(2, '0')}`)
+                      }
                     }, [data.technology])
 
                     return label
