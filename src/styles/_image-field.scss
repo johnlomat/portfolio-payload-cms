@@ -1,0 +1,19 @@
+.document-fields__sidebar-fields {
+  .file-details header {
+    position: relative;
+    flex-direction: column;
+
+    .thumbnail {
+      width: 100%;
+    }
+    .file-details__main-detail {
+      width: 100%;
+    }
+    .file-details__remove {
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin: 1rem;
+    }
+  }
+}
