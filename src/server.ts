@@ -21,6 +21,7 @@ app.use(
     {
       folder: 'portfolio',
       use_filename: true,
+      unique_filename: false,
     },
   ),
 )
