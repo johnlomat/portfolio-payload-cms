@@ -1,5 +1,4 @@
 import { slateEditor } from '@payloadcms/richtext-slate'
-import path from 'path'
 import type { CollectionConfig } from 'payload/types'
 
 export const Media: CollectionConfig = {
@@ -8,7 +7,7 @@ export const Media: CollectionConfig = {
     defaultColumns: ['filename', 'width', 'height', 'filesize', 'updatedAt', 'createdAt'],
   },
   upload: {
-    staticDir: path.resolve(__dirname, '../../media'),
+    disableLocalStorage: true,
   },
   access: {
     read: () => true,
