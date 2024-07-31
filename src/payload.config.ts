@@ -21,6 +21,8 @@ export default buildConfig({
   },
   editor: slateEditor({}),
   collections: [Users, Projects, Skills, Technologies, Media],
+  cors: ['http://localhost:3000', process.env.NEXT_PUBLIC_SITE_URL],
+  csrf: ['http://localhost:3000', process.env.NEXT_PUBLIC_SITE_URL],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),
   },
