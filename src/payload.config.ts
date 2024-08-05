@@ -24,8 +24,18 @@ export default buildConfig({
   },
   editor: slateEditor({}),
   collections: [Users, Pages, Projects, Skills, Technologies, Media],
-  cors: ['http://localhost:3000', process.env.NEXT_PUBLIC_SITE_URL],
-  csrf: ['http://localhost:3000', process.env.NEXT_PUBLIC_SITE_URL],
+  cors: [
+    'http://localhost:3000',
+    'http://localhost:3005',
+    'https://portfolio-payload-cms.onrender.com',
+    'https://johnlomat.vercel.app',
+  ],
+  csrf: [
+    'http://localhost:3000',
+    'http://localhost:3005',
+    'https://portfolio-payload-cms.onrender.com',
+    'https://johnlomat.vercel.app',
+  ],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),
   },
