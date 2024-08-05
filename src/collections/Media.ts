@@ -1,5 +1,6 @@
 import { slateEditor } from '@payloadcms/richtext-slate'
 import type { CollectionConfig } from 'payload/types'
+import { isLoggedIn } from '../access/isLoggedIn'
 
 export const Media: CollectionConfig = {
   slug: 'media',
@@ -11,6 +12,9 @@ export const Media: CollectionConfig = {
   },
   access: {
     read: () => true,
+    create: isLoggedIn,
+    update: isLoggedIn,
+    delete: isLoggedIn,
   },
   fields: [
     {

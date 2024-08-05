@@ -1,5 +1,6 @@
 import { CollectionConfig } from 'payload/types'
 import { slugField } from '../fields/slug'
+import { isLoggedIn } from '../access/isLoggedIn'
 
 const Pages: CollectionConfig = {
   slug: 'pages',
@@ -9,9 +10,9 @@ const Pages: CollectionConfig = {
   },
   access: {
     read: () => true,
-    update: () => true,
-    create: () => true,
-    delete: () => true,
+    update: isLoggedIn,
+    create: isLoggedIn,
+    delete: isLoggedIn,
   },
   fields: [
     {

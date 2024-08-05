@@ -1,10 +1,17 @@
 import { CollectionConfig } from 'payload/types'
+import { isLoggedIn } from '../access/isLoggedIn'
 
 const Technologies: CollectionConfig = {
   slug: 'technologies',
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['title', 'updatedAt', 'createdAt'],
+  },
+  access: {
+    read: () => true,
+    create: isLoggedIn,
+    update: isLoggedIn,
+    delete: isLoggedIn,
   },
   fields: [
     {

@@ -1,12 +1,19 @@
 import { CollectionConfig } from 'payload/types'
 import { RowLabelArgs } from 'payload/dist/admin/components/forms/RowLabel/types'
 import { useState, useEffect } from 'react'
+import { isLoggedIn } from '../access/isLoggedIn'
 
 const Projects: CollectionConfig = {
   slug: 'projects',
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['title', 'website_type', 'updatedAt', 'createdAt'],
+  },
+  access: {
+    read: () => true,
+    create: isLoggedIn,
+    update: isLoggedIn,
+    delete: isLoggedIn,
   },
   fields: [
     {
@@ -49,6 +56,16 @@ const Projects: CollectionConfig = {
               name: 'key_features',
               label: 'Key Features',
               type: 'richText',
+            },
+            {
+              name: 'demo_link',
+              label: 'Demo Link',
+              type: 'text',
+            },
+            {
+              name: 'screenshot_link',
+              label: 'Screenshot Link',
+              type: 'text',
             },
           ],
         },

@@ -1,4 +1,5 @@
 import { CollectionConfig } from 'payload/types'
+import { isLoggedIn } from '../access/isLoggedIn'
 
 const Users: CollectionConfig = {
   slug: 'users',
@@ -6,6 +7,12 @@ const Users: CollectionConfig = {
   admin: {
     useAsTitle: 'email',
     defaultColumns: ['email', 'position', 'updatedAt', 'createdAt'],
+  },
+  access: {
+    read: () => true,
+    create: isLoggedIn,
+    update: isLoggedIn,
+    delete: isLoggedIn,
   },
   fields: [
     // Email added by default

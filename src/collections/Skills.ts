@@ -1,12 +1,19 @@
 import { CollectionConfig } from 'payload/types'
 import { RowLabelArgs } from 'payload/dist/admin/components/forms/RowLabel/types'
 import { useState, useEffect } from 'react'
+import { isLoggedIn } from '../access/isLoggedIn'
 
 const Skills: CollectionConfig = {
   slug: 'skills',
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['title', 'updatedAt', 'createdAt'],
+  },
+  access: {
+    read: () => true,
+    create: isLoggedIn,
+    update: isLoggedIn,
+    delete: isLoggedIn,
   },
   fields: [
     {
@@ -19,7 +26,7 @@ const Skills: CollectionConfig = {
       },
     },
     {
-      name: 'techonologies',
+      name: 'technologies',
       label: 'Technologies',
       type: 'array',
       labels: {
